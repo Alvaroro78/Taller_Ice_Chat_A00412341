@@ -50,7 +50,7 @@ public class ClientMain {
             Thread listenerThread = new Thread(() -> {
                 while (running) {
                     try {
-                        ChatMessage[] newMessages = chatPrx.getPendingMessages(active.User, lastReceivedId);
+                        ChatMessage[] newMessages = chatPrx.getPendingMessages(activeUser, lastReceivedId);
                         for (ChatMessage msg: newMessages) {
                             if (msg.id > lastReceivedId) {
                                 lastReceivedId = msg.id;

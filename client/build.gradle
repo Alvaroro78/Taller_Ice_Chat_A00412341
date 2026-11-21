@@ -6,7 +6,7 @@ dependencies {
     implementation project(':common')
 }
 
-apllication {
+application {
     mainClass = 'chat.client.ClientMain'
 }
 

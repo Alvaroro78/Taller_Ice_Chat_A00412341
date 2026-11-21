@@ -1,5 +1,5 @@
 plugins {
-    id 'java - library'
+    id 'java-library'
 }
 
 // Tarea para compilar Slice a Java antes de compilar el codigo fuente
