@@ -1,0 +1,5 @@
+rootProject.name = 'Taller_Ice_Chat_A00412341'
+
+include 'common'
+include 'server'
+include 'client'
