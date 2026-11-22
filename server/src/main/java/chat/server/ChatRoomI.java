@@ -25,7 +25,7 @@ public class ChatRoomI implements ChatRoom {
         }
         String cleanNick = nickname.trim();
         if (onlineUsers.contains(cleanNick)) {
-            throw new ChatException("El nickname ’" + cleanNick + "’ ya se encuentra conectado.");
+            throw new ChatException("El nickname '" + cleanNick + "' ya se encuentra conectado.");
         }
         onlineUsers.add(cleanNick);
         System.out.println("[ICE - SERVER] Usuario conectado con exito : " + cleanNick);
@@ -38,7 +38,7 @@ public class ChatRoomI implements ChatRoom {
     }
 
     @Override
-    public void postMessage (String nickname, String message, Current current) throws ChatException {
+    public void postMessage(String nickname, String message, Current current) throws ChatException {
         if (!onlineUsers.contains(nickname)) {
             throw new ChatException ("Acceso denegado: El usuario debe iniciar sesion primero.") ;
         }
@@ -69,12 +69,12 @@ public class ChatRoomI implements ChatRoom {
     }
 
     @Override
-    public synchronized void logout ( String nickname , Current current ) {
-        if ( onlineUsers . remove ( nickname ) ) {
-            System . out . println ("[ICE - SERVER ] Usuario desconectado : " + nickname );
-            String now = LocalTime . now () . format ( timeFormat );
-            long id = messageIdCounter . incrementAndGet () ;
-            ChatMessage leaveMsg = new ChatMessage (id , " SISTEMA ", nickname + " ha abandonado la sala .", now ) ;
+    public synchronized void logout(String nickname, Current current) {
+        if ( onlineUsers.remove(nickname)) {
+            System.out.println("[ICE - SERVER ] Usuario desconectado : " + nickname );
+            String now = LocalTime.now().format(timeFormat);
+            long id = messageIdCounter.incrementAndGet() ;
+            ChatMessage leaveMsg = new ChatMessage(id, "SISTEMA", nickname + " ha abandonado la sala. ", now ) ;
             messageHistory . add ( leaveMsg );
         }
     }

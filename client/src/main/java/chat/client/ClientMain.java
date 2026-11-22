@@ -78,12 +78,12 @@ public class ClientMain {
             while (running) {
                 System.out.print("> ");
                 String input = scanner.nextLine().trim();
-                if (input.equalsIgnoreCase("/ exit ")) {
+                if (input.equalsIgnoreCase("/exit")) {
                     running = false;
                     try {
                         chatPrx.logout(activeUser);
                     } catch (Exception ignored) {}
-                    System.out.println(">>> Sesion cerrada satisfactoriamente. Hasta pronto !");
+                    System.out.println(">>> Sesion cerrada satisfactoriamente. Hasta pronto!");
                     break;
                 } else if (input.equalsIgnoreCase("/users")) {
                     try {

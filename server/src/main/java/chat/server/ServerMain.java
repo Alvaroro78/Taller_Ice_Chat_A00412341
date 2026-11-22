@@ -11,12 +11,12 @@ public class ServerMain {
         try (Communicator communicator = Util.initialize(args)) {
             // 1. Crear Ob je ct Ad apt er vinculado al puerto TCP 10000
             ObjectAdapter adapter = communicator.createObjectAdapterWithEndpoints(
-                    " ChatAdapter ", " default -p 10000 "
+                    "ChatAdapter", "default -p 10000"
             );
 
             // 2. Instanciar el Servant y registrarlo con identidad ’ ChatService ’
             ChatRoomI servant = new ChatRoomI();
-            adapter.add(servant, Util.stringToIdentity(" ChatService "));
+            adapter.add(servant, Util.stringToIdentity("ChatService"));
 
             // 3. Activar el adaptador para recibir llamadas RPC
             adapter.activate();
