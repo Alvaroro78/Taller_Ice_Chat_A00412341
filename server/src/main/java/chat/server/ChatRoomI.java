@@ -45,10 +45,12 @@ public class ChatRoomI implements ChatRoom {
         if ( message == null || message.trim().isEmpty()) {
             return;
         }
-        long id = messageIdCounter.incrementAndGet();
         String now = LocalTime.now().format(timeFormat);
-        ChatMessage msg = new ChatMessage(id, nickname, message.trim(), now);
-        messageHistory.add(msg);
+        synchronized (this) {
+            long id = messageIdCounter.incrementAndGet();
+            ChatMessage msg = new ChatMessage(id, nickname, message.trim(), now);
+            messageHistory.add(msg);
+        }
         System.out.println("[" + now + "] <" + nickname + "> " + message.trim());
     }
 

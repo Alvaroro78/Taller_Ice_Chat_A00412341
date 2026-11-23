@@ -1,37 +1,37 @@
 module ChatApp {
-    // Estructura que modela un mensaje del chat
+    //Estructura que modela un mensaje del chat
     struct ChatMessage {
-        long id ;
-        string sender ;
-        string text ;
-        string timestamp ;
+        long id;
+        string sender;
+        string text;
+        string timestamp;
     };
 
-    // Secuencias tipadas ( equivalentes a arreglos / listas en Java )
-    sequence < ChatMessage > MessageSeq ;
-    sequence < string > UserSeq ;
+    //Secuencias tipadas (equivalentes a arreglos / listas en Java)
+    sequence<ChatMessage> MessageSeq;
+    sequence<string> UserSeq;
 
     // Excepcion de usuario para validaciones de negocio
     exception ChatException {
-        string reason ;
+        string reason;
     };
 
     // Interfaz remota provista por el servidor Ice
     interface ChatRoom {
 
         // Registra un usuario ; falla si el nickname ya existe
-        void login ( string nickname ) throws ChatException ;
+        void login(string nickname) throws ChatException;
 
         // Envia un mensaje a la sala compartida
-        void postMessage ( string nickname , string message ) throws ChatException ;
+        void postMessage(string nickname, string message) throws ChatException;
 
         // Consulta de mensajes pendientes ; idempotent permite reintentos seguros de red
-        idempotent MessageSeq getPendingMessages ( string nickname , long lastMessageId );
+        idempotent MessageSeq getPendingMessages(string nickname ,long lastMessageId);
 
         // Retorna la lista de usuarios activos actualmente
-        idempotent UserSeq getOnlineUsers () ;
+        idempotent UserSeq getOnlineUsers();
 
         // Cierra sesion y desvincula al usuario
-        void logout ( string nickname );
+        void logout(string nickname);
     };
 };
