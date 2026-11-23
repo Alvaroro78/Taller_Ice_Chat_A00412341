@@ -35,7 +35,7 @@ public class ClientMain {
                 if (nickname.isEmpty()) continue;
                 try {
                     chatPrx.login(nickname);
-                    System.out.println(">>> Autenticado correctamente como '" + nickname + " '.");
+                    System.out.println(">>> Autenticado correctamente como '" + nickname + "'.");
                     System.out.println(">>> Comandos disponibles: /users (lista usuarios), /exit (salir)");
                     System.out.println("-------------------------------------------------") ;
                     break;
